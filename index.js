@@ -1,7 +1,9 @@
+
 const express= require('express');
 const app = express();
 const http = require('http');
 const path = require('path');
+require('dotenv').config();
 
 const socketio = require("socket.io")
 
@@ -23,12 +25,12 @@ io.on('connection', (socket) => {
    })
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.get('/',(req,res)=>{
    res.render("index");
 })
 
 server.listen(PORT,()=>{
-    console.log(`server is running on https://localhost:${PORT}`);
+    console.log("server is running");
  });
